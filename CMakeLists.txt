@@ -9,6 +9,9 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add the Qt6 installation path
+set(CMAKE_PREFIX_PATH "C:/Qt/6.8.2/msvc2022_64")
+
 if(NOT QMH_QT_VERSIONS)
     set(QMH_QT_VERSIONS Qt6)
 endif()

@@ -14,13 +14,13 @@ class qhookerMain : public QObject
     Q_OBJECT
 
 private:
-    QCoreApplication *mainApp;
+    QCoreApplication* mainApp;
 
-    QSettings *settings;
+    QSettings* settings;
 
     QTcpSocket tcpSocket;
 
-    QSerialPort *serialPort;
+    QSerialPort* serialPort;
 
     QStringList buffer;
 
@@ -43,7 +43,7 @@ private:
     QMap<int, QSerialPort*> serialPortMap;
 
 public:
-    explicit qhookerMain(QObject *parent = 0);
+    explicit qhookerMain(QObject* parent = 0);
 
     bool verbosity = false;
 
@@ -53,7 +53,7 @@ public:
 
     QString customPath;
 
-    void PrintDeviceInfo(const QList<QSerialPortInfo> &devices);
+    void PrintDeviceInfo(const QList<QSerialPortInfo>& devices);
 
     void quit();
 
@@ -65,7 +65,7 @@ public slots:
 
     void aboutToQuitApp();
 
-//private slots:
+    //private slots:
 
 };
 
