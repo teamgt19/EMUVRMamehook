@@ -1,0 +1,16 @@
+bin\Debug\MameInteropTest.exe
+bin\Debug\MameInteropTest.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\MameInteropTest.Form1.resources
+obj\Debug\MameInteropTest.Properties.Resources.resources
+obj\Debug\MameInteropTest.csproj.GenerateResource.Cache
+obj\Debug\MameInteropTest.exe
+obj\Debug\MameInteropTest.pdb
+bin\Release\MameInteropTest.exe
+bin\Release\MameInteropTest.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\MameInteropTest.Form1.resources
+obj\Release\MameInteropTest.Properties.Resources.resources
+obj\Release\MameInteropTest.csproj.GenerateResource.Cache
+obj\Release\MameInteropTest.exe
+obj\Release\MameInteropTest.pdb

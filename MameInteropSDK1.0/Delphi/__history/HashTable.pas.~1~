@@ -1,0 +1,139 @@
+(*******************************************************************************************************************
+Name    : HashTable
+Version : 0.0a
+Author  : ksoze@operamail.com
+Date    : 3 May 2000
+
+Code Revised by madmax98@hotmail.com
+
+Implementation of Hash Tables in object pascal, collisions are
+resolved by chaining.
+
+Help :
+We Want to map a big Universe of Keys (example : string of 10 chars that is 256^10 in size) into an array
+(max size = max longint size) so we can use direct addressing to search inserted keys (very fast that is O(1) ).
+We can have a Hash function H : Keys --> Array (simplest is Position_in_array := Key_Value mod Array_Size) to
+associate a slot to evey key but, since Keys are many more than slots in our array , when we insert a big number of keys,
+we 'll produce collisions. Collisions happen when 2 different keys maps to the same slot in the array.
+We resolve this problem using linked list which store elements mapping to the same slot (one list per slot).
+Now we can find an element calculating the slot number by its own key value, the slot will store a list of keys
+with our target too, so we can scan the list to get it.
+If the keys are randomly distribuited and the Hash size is not smaller than the number of elements we want to store
+in it, the collision lists wont grow too much, and calculating the slot number by key value + scanning the collision
+list wont take more than O(1) that is an amount of costant time.
+
+If you want to work with Hash Tables you may want to consider PERL which has native support for hash tables just like
+arrays for pascal. isnt it great? :)
+
+PS Never tried if the code below works, it's just for educational purposes =)
+
+PS2 MadMax tried it, and it works fine =)) 
+
+********************************************************************************************************************)
+
+unit HashTable;
+
+interface
+
+type
+  PCollisionList = ^TCell;
+  TCollisionList = PCollisionList;
+
+  TCell = record
+    Key, Data: string;
+    Next: PCollisionList;
+  end;
+
+  THashTable = array of TCollisionList;
+
+  TDataList = array of string;
+    // Result of a Hash-Search, List of Data fields associated to a Key
+
+  procedure CreateHashTable(HashSize: longint; var H: THashTable);
+  function HashFunction(Key: string; var H: THashTable): longint;
+  procedure HashInsert(Key, Data: string; var H: THashTable);
+  function HashSearch(Key: string; var DataList: TDataList; var H: THashTable): boolean;
+
+implementation
+
+// Just initialize the hash table
+
+procedure CreateHashTable(HashSize: longint; var H: THashTable);
+
+var
+  i: longint;
+
+begin
+  SetLength(H, 0); // Clean The Array
+  SetLength(H, HashSize);
+  // we assume every H[i] will be a pointer = nil
+end;
+
+// Calculate the index of the array from a key
+
+function HashFunction(Key: string; var H: THashTable): longint;
+
+var
+  i: integer;
+
+begin
+  Result := 0; // duh!? :)
+  // We must convert the Key (a string) to an integer number --> just a silly routine
+  for i := 1 to Length(Key) do
+    Result := Result + Integer(Key[i]);
+  // Result will overflow, we assume compiler does automatically Number = Overflow_Number mod Max_Int
+  // The Simpler Hash Function to map Key's Universe into Our Array is Position = Key mod array_size
+  Result := Result mod Length(H);
+end;
+
+// Insert Key with its Data in HashTable H
+
+procedure HashInsert(Key, Data: string; var H: THashTable);
+
+var
+  Index: longint;
+  p: PCollisionList;
+
+begin
+  // Calculate the index of the Key
+  Index := HashFunction(Key, H);
+  // Insert the key in the head of the collision list
+  New(p); // Create new TCell of the element we want to insert
+  p^.Key := Key;
+  p^.Data := Data;
+  p^.Next := H[Index];
+    // The new element points to the first element of the list (which now becomes the second)
+  H[Index] := p; // the list now starts with the new element
+end;
+
+// Searchs Key in a hashtable H , returns a list of Data fields in var DataField and a boolean which is true if
+// we have found something
+
+function HashSearch(Key: string; var DataList: array of string; var H: THashTable): boolean;
+
+var
+  p: PCollisionList;
+  ExpectedIndex: longint;
+
+begin
+  // Calculate the Expected index
+  ExpectedIndex := HashFunction(Key, H);
+  // Scan the collision list looking for our key
+  //if the key are randomly distribuited, the scan wont take more than a brief time
+  p := H[ExpectedIndex]; // p points to the start of the collision list
+  SetLength(DataList, 0); // reset Datalist
+  Result := false;
+  while p <> nil do //(p = nil at the end of the list)
+  begin
+    if p^.Key = Key then
+    begin
+      Result := true;
+      SetLength(DataList, Length(DataList) + 1);
+        // Size_Of_DataList = Size_Of_DataList + 1
+      DataList[High(DataList)] := p^.Data; // the last element of DataList := p^.Data
+    end;
+    p := p^.Next;  // Process next element
+  end
+end;
+
+end.

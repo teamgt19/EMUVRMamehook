@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Mame - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Headspin\LOCALS~1\Temp\RSP264A.tmp" with contents
+[
+/nologo /Gz /Zp4 /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "MAME_EXPORTS" /FR"Release/" /Fp"Release/Mame.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\Headspin\My Documents\Visual Studio Projects\ledutil\dll_VB6\Mame.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Headspin\LOCALS~1\Temp\RSP264A.tmp" 
+Creating temporary file "C:\DOCUME~1\Headspin\LOCALS~1\Temp\RSP264B.tmp" with contents
+[
+/nologo /Gz /Zp4 /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "MAME_EXPORTS" /FR"Release/" /Fp"Release/Mame.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\Headspin\My Documents\Visual Studio Projects\ledutil\dll_VB6\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Headspin\LOCALS~1\Temp\RSP264B.tmp" 
+Creating temporary file "C:\DOCUME~1\Headspin\LOCALS~1\Temp\RSP264C.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Release/Mame.pdb" /machine:I386 /def:".\Mame.def" /out:"Release/Mame.dll" /implib:"Release/Mame.lib" 
+".\Release\Mame.obj"
+".\Release\StdAfx.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\Headspin\LOCALS~1\Temp\RSP264C.tmp"
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+Compiling...
+Mame.cpp
+Linking...
+   Creating library Release/Mame.lib and object Release/Mame.exp
+Creating command line "bscmake.exe /nologo /o"Release/Mame.bsc"  ".\Release\StdAfx.sbr" ".\Release\Mame.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Mame.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,10 @@
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\MameInteropTest.Form1.resources
+obj\Release\MameInteropTest.Resources.resources
+obj\Release\MameInteropTest.vbproj.GenerateResource.Cache
+bin\Release\MameInteropTest.exe
+bin\Release\MameInteropTest.pdb
+bin\Release\MameInteropTest.xml
+obj\Release\MameInteropTest.exe
+obj\Release\MameInteropTest.xml
+obj\Release\MameInteropTest.pdb
