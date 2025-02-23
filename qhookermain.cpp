@@ -269,7 +269,6 @@ bool qhookerMain::GameSearching(QString input)
     return false;
 }
 
-
 bool qhookerMain::GameStarted(QString input)
 {
     if (buffer.isEmpty())
